@@ -1,0 +1,14 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3316
+
+This plugin will automatically add any encodings which you have installed on
+your Microsoft Windows system to the g:html_encoding_override and
+g:html_charset_override options of the :TOhtml plugin which is distributed
+as part of the official Vim runtime.
+
+This plugin has no mappings or user-defined commands. It sets up an :autocmd
+that will be invoked the first time that you call the :TOhtml command or
+directly :source the 2html.vim script.
+
+Because the plugin does not trigger until just before the first :TOhtml
+conversion, you will not see any changes to the encoding detection options
+right away. This is normal, do not be alarmed!

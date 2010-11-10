@@ -1,0 +1,79 @@
+*tohtml_wincp.txt* Autodetect installed Windows encodings for |:TOhtml|
+
+This plugin will automatically add any encodings which you have installed on
+your Microsoft Windows system to the g:html_encoding_override and
+g:html_charset_override options of the |:TOhtml| plugin which is distributed
+as part of the official Vim runtime.
+
+This plugin has no mappings or user-defined commands. It sets up an |:autocmd|
+that will be invoked the first time that you call the |:TOhtml| command or
+directly |:source| the |2html.vim| script.
+
+Because the plugin does not trigger until just before the first |:TOhtml|
+conversion, you will not see any changes to the encoding detection options
+right away. This is normal, do not be alarmed!
+
+						     *tohtml_wincp-requirements*
+This plugin requires:
+	* Vim 7.0 or higher
+	* TOhtml version vim7.3_v7 or higher
+	* Windows NT/2000 or later (i.e. something that uses a System32
+	  directory)
+
+							  *tohtml_wincp-install*
+To install, there are only three files you need. This |:help| file, a
+tohtml_wincp.vim file to place in your |after-directory|, and another
+tohtml_wincp.vim file to place in your |autoload| directory. Simply place the
+files where they need to go within your runtime, as follows:
+	* $HOME/vimfiles/doc/tohtml_wincp.txt
+	* $HOME/vimfiles/after/plugin/tohtml_wincp.vim
+	* $HOME/vimfiles/autoload/tohtml_wincp.vim
+
+Then, run "|:helptags| $HOME/vimfiles/doc" and installation is complete.
+
+							  *tohtml_wincp-actions*
+When invoked, this |:autocmd| will add to g:html_encoding_override so that
+using any of the IANA-registered names for any of the installed encodings on
+your system in g:html_use_encoding will automatically set the correct
+'fileencoding' for the converted (x)html file.
+
+Additionally, the plugin will add to g:html_charset_override so that |:TOhtml|
+will recognize any installed encodings on your system, and add the appropriate
+encoding specification to the (x)html file, if the encoding has support in all
+of Internet Explorer, Firefox, Opera, Safari, and Chrome.
+
+							 *tohtml_wincp-override*
+This plugin does not override any previously existing user settings for
+encoding detection in |:TOhtml|. This means that you can safely set up your
+own overrides in g:html_charset_override or g:html_encoding_override without
+worrying that they will be changed by the plugin.
+
+This also means, if you don't want specific web encodings auto-detected by
+|:TOhtml|, you can set up an entry in the g:html_charset_override option,
+mapping the specific encodings to an empty string or the desired web encoding
+to use instead. For example, if for some reason you want to convert to UTF-8
+for the (x)html encoding whenever the windows-1252 encoding is used in Vim,
+use the following: >
+	:let g:html_charset_override = {'cp1252': 'UTF-8'}
+
+Or, to skip using the 'fileencoding' value and fall back to the 'encoding'
+value, associate the Vim encoding to an empty string. For example, to fall
+back to 'encoding' for ISO-2022-KR encoded files (cp50225), use: >
+	:let g:html_charset_override = {'cp50225': ''}
+
+You can also override settings using g:html_encoding_override, but there is not
+really much reason to do so, because this option will only be used when you
+have explicitly specified to use the encoding in question.
+
+						       *tohtml_wincp-references*
+The following websites were used in creating this plugin:
+
+* http://msdn.microsoft.com/en-us/library/dd317756(VS.85).aspx for the meaning
+  of all the Windows codepages
+* http://www.iana.org/assignments/character-sets for encoding names/aliases
+* http://wiki.whatwg.org/wiki/Web_Encodings for Internet Explorer, Firefox,
+  and Opera supported encodings
+* http://demo.icu-project.org/icu-bin/convexp for Chrome/Safari supported
+  encodings
+
+ vim:tw=78:sw=8:ts=8:noet:ft=help:norl:
