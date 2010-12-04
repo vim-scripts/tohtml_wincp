@@ -3,15 +3,15 @@
 " codepage from an HTML encoding.
 "
 " Maintainer: Ben Fritz <fritzophrenic@gmail.com>
-" Version: 1
+" Version: 2
 
 if exists('g:loaded_2html_wincp_plugin')
   finish
 else
-  let g:loaded_2html_wincp_plugin = 1
+  let g:loaded_2html_wincp_plugin = 2
 endif
 
-if has('autocmd') && exists('##SourcePre') && has('win32') || has('win64')
+if has('autocmd') && exists('##SourcePre') && (has('win32') || has('win64'))
   augroup TOHTML_CPWIN32
     au!
     " automatically load HTML encodings installed codepages only once, right
@@ -21,9 +21,8 @@ if has('autocmd') && exists('##SourcePre') && has('win32') || has('win64')
           \ str2nr(substitute(g:loaded_2html_plugin, '.*_v', '', '')) >= 7
       au SourcePre $VIMRUNTIME/autoload/tohtml.vim call tohtml_wincp#get_installed_cps()
       au SourcePre $HOME/vimfiles/autoload/tohtml.vim call tohtml_wincp#get_installed_cps()
-      au SourcePre $VIMRUNTIME/autoload/tohtml.vim echomsg "hello world!"
     else
-      au SourcePre syntax/2html.vim echomsg "Warning: wrong version of 2html to autodetect Windows codepages"
+      au SourcePre */syntax/2html.vim echomsg "Warning: wrong version of 2html to autodetect Windows codepages" | sleep 1
     endif
   augroup END
 endif

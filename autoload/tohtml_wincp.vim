@@ -3,7 +3,7 @@
 " codepage from an HTML encoding.
 "
 " Maintainer: Ben Fritz <fritzophrenic@gmail.com>
-" Version: 1
+" Version: 2
 
 let s:all_windows_codepages = {
       \ 'c_037.nls'  :   [0, 1,
