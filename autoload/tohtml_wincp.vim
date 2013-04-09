@@ -3,7 +3,8 @@
 " codepage from an HTML encoding.
 "
 " Maintainer: Ben Fritz <fritzophrenic@gmail.com>
-" Version: 2
+" Version: 4
+" License: MIT <http://opensource.org/licenses/MIT>
 
 let s:all_windows_codepages = {
       \ 'c_037.nls'  :   [0, 1,

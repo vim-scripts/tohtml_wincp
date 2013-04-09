@@ -23,10 +23,17 @@ This plugin requires:
 							  *tohtml_wincp-install*
 To install, there are only three files you need. This |:help| file, a
 tohtml_wincp.vim file to place in your |after-directory|, and another
-tohtml_wincp.vim file to place in your |autoload| directory. Simply place the
-files where they need to go within your runtime, as follows:
+tohtml_wincp.vim file to place in your |autoload| directory.
+
+The easiest way to install is to use Pathogen
+(http://www.vim.org/scripts/script.php?script_id=2332) and place the whole
+contents of the zip file into $HOME/vimfiles/bundle. Then run the :Helptags
+command provided with Pathogen.
+
+For manual installation, simply place the files where they need to go within
+your runtime, as follows:
 	* $HOME/vimfiles/doc/tohtml_wincp.txt
-	* $HOME/vimfiles/after/plugin/tohtml_wincp.vim
+	* $HOME/vimfiles/plugin/tohtml_wincp.vim
 	* $HOME/vimfiles/autoload/tohtml_wincp.vim
 
 Then, run "|:helptags| $HOME/vimfiles/doc" and installation is complete.
